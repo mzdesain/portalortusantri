@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sistem Manajemen & Monitoring Tahfidz Santri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcfdfe;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .nav-btn-active {
+            background-color: #1e293b !important;
+            color: white !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .scrollable-nav {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .scrollable-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card-minimal {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: white;
+        }
+
+        .card-minimal:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .c-vii {
+            border-left: 6px solid #3b82f6;
+        }
+
+        .c-viii {
+            border-left: 6px solid #10b981;
+        }
+
+        .c-ix {
+            border-left: 6px solid #f59e0b;
+        }
+
+        .c-x {
+            border-left: 6px solid #8b5cf6;
+        }
+
+        .c-xi {
+            border-left: 6px solid #ef4444;
+        }
+
+        .c-xii {
+            border-left: 6px solid #06b6d4;
+        }
+
+        .rapor-container {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #e2e8f0;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .rapor-container {
+                border: none;
+                shadow: none;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="h-full flex flex-col text-slate-900">
+    <div id="app" class="min-h-full flex flex-col flex-1">
+
+        <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 no-print">
+            <div class="px-4 md:px-8 py-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-4">
+                        <img src="logo-pondoknya.jpeg" class="w-12 h-12 object-contain">
+                        <div>
+                            <h1 class="text-base md:text-xl font-extrabold tracking-tight">Sistem Manajemen & Monitoring
+                                Tahfidz Santri</h1>
+                            <p class="text-[9px] text-emerald-600 font-bold tracking-widest text-left">Markas Al-Quran
+                                Al-Imam Hafs bin Sulaiman Al-Kufi, Kab. Gowa</p>
+                        </div>
+                    </div>
+                    <div class="scrollable-nav overflow-x-auto">
+                        <div class="flex space-x-2 pb-1" style="min-width: max-content;">
+                            <button onclick="window.showPage('dashboard')" id="nav-dashboard"
+                                class="nav-btn-active px-5 py-2 rounded-xl text-xs md:text-sm font-bold transition-all">Dashboard</button>
+                            <button onclick="window.showPage('kelas')" id="nav-kelas"
+                                class="px-5 py-2 rounded-xl text-xs md:text-sm font-bold text-slate-500 hover:bg-slate-100 transition-all">Menu
+                                Kelas</button>
+                            <button onclick="window.showPage('tentang')" id="nav-tentang"
+                                class="px-5 py-2 rounded-xl text-xs md:text-sm font-bold text-slate-500 hover:bg-slate-100 transition-all">Tentang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="p-4 md:p-10 flex-1 max-w-7xl mx-auto w-full">
+            <section id="page-dashboard" class="page-content space-y-8">
+                <div class="relative p-6 md:p-10 rounded-[2.5rem] bg-slate-900 text-white overflow-hidden shadow-2xl">
+                    <div class="relative z-10">
+                        <h2 class="text-2xl md:text-4xl font-extrabold mb-4 tracking-tight">Assalamu'alaikum, Ayah
+                            Bunda! 👋</h2>
+                        <p class="text-slate-300 leading-relaxed text-sm md:text-lg max-w-2xl font-light">
+                            Selamat datang di portal informasi hafalan ananda. Semoga setiap ayat menjadi cahaya bagi
+                            keluarga. Dukungan Ayah Bunda adalah kunci utama kesuksesan ananda.
+                        </p>
+                    </div>
+                    <i class="fas fa-quran absolute -right-10 -bottom-10 text-[15rem] opacity-5"></i>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div
+                        class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm flex items-center space-x-5 group hover:border-blue-500 transition-all">
+                        <div
+                            class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-xl shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-black text-slate-400">Total Santri</p>
+                            <h3 id="stat-santri" class="text-2xl font-bold">0</h3>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm flex items-center space-x-5">
+                        <div
+                            class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-xl shadow-inner">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-black text-slate-400">Program</p>
+                            <h3 class="text-lg font-bold uppercase">Tahfidz & Hadits</h3>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm flex items-center space-x-5">
+                        <div
+                            class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-xl shadow-inner">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-black text-slate-400">Standard</p>
+                            <h3 class="text-lg font-bold uppercase font-black">Mumtaz</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="page-kelas" class="page-content hidden space-y-8">
+                <div id="view-kelas-grid" class="space-y-8">
+                    <div class="flex items-center space-x-3">
+                        <span class="h-6 w-1 bg-slate-900 rounded-full"></span>
+                        <h3 class="text-xl font-bold uppercase tracking-widest text-slate-800">Pilih Jenjang Kelas</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="kelas-grid-container"></div>
+                </div>
+
+                <div id="view-santri-list" class="hidden space-y-6">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <button onclick="window.backToKelas()"
+                            class="text-xs font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 flex items-center transition-colors">
+                            <i class="fas fa-arrow-left mr-2"></i> Kembali
+                        </button>
+                        <div class="relative w-full md:w-80">
+                            <input type="text" id="search-input" onkeyup="window.searchSantri()"
+                                placeholder="Cari nama santri..."
+                                class="w-full px-5 py-4 bg-white border border-slate-200 rounded-2xl outline-none focus:ring-4 focus:ring-slate-100 text-sm transition-all shadow-sm">
+                            <i class="fas fa-search absolute right-5 top-4 text-slate-300"></i>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
+                        <table class="w-full text-left">
+                            <tbody id="santri-table-body" class="divide-y divide-slate-50"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="page-pilihan-laporan" class="page-content hidden space-y-12">
+                <div class="text-center space-y-2">
+                    <h2 id="choice-nama"
+                        class="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter leading-tight">
+                    </h2>
+                    <p id="choice-info"
+                        class="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em]"></p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div onclick="window.prepareLaporan('pekanan')"
+                        class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-slate-100 cursor-pointer transition-all duration-500 group text-center">
+                        <div
+                            class="w-16 h-16 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <i class="fas fa-calendar-week text-2xl text-center"></i>
+                        </div>
+                        <h4 class="font-black text-slate-800 text-xs uppercase tracking-widest text-center">Laporan
+                            Pekanan</h4>
+                    </div>
+                    <div onclick="window.prepareLaporan('bulanan')"
+                        class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-slate-100 cursor-pointer transition-all duration-500 group text-center text-center">
+                        <div
+                            class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                            <i class="fas fa-calendar-alt text-2xl text-center"></i>
+                        </div>
+                        <h4 class="font-black text-slate-800 text-xs uppercase tracking-widest text-center text-center">
+                            Laporan Bulanan</h4>
+                    </div>
+                    <div onclick="window.prepareLaporan('semester')"
+                        class="bg-white p-8 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-slate-100 cursor-pointer transition-all duration-500 group text-center text-center">
+                        <div
+                            class="w-16 h-16 bg-indigo-50 text-indigo-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                            <i class="fas fa-graduation-cap text-2xl text-center"></i>
+                        </div>
+                        <h4 class="font-black text-slate-800 text-xs uppercase tracking-widest text-center text-center">
+                            Rapor Semester</h4>
+                    </div>
+                </div>
+            </section>
+
+            <section id="page-rapor-detail" class="page-content hidden">
+                <div class="no-print mb-8 max-w-3xl mx-auto px-4 flex justify-between items-center">
+                    <button onclick="window.showPage('pilihan-laporan')"
+                        class="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center hover:text-slate-900 transition-colors"><i
+                            class="fas fa-arrow-left mr-2"></i> Kembali</button>
+                    <button onclick="window.print()"
+                        class="px-6 py-2 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl">Print
+                        PDF</button>
+                </div>
+
+                <div class="rapor-container p-6 md:p-14 shadow-2xl relative">
+                    <div class="text-center space-y-1 mb-10 pb-6 border-b-2 border-slate-900">
+                        <h2 id="r-title"
+                            class="text-base md:text-2xl font-black uppercase tracking-[0.2em] text-slate-900 leading-tight">
+                        </h2>
+                        <h3
+                            class="text-[10px] md:text-sm font-bold text-slate-600 uppercase tracking-widest text-center">
+                            Markas Al-Quran Al-Imam Hafs bin Sulaiman Al-Kufi, Kab. Gowa</h3>
+                        <p id="r-subtitle"
+                            class="text-[9px] md:text-[11px] text-slate-400 mt-2 font-bold uppercase tracking-tighter text-center">
+                        </p>
+                    </div>
+
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2 text-[11px] mb-8 pb-8 border-b border-slate-100 uppercase font-bold text-slate-500">
+                        <div class="space-y-1.5">
+                            <p class="flex justify-between">NAMA SANTRI <span id="r-nama"
+                                    class="text-slate-900 font-black"></span></p>
+                            <p class="flex justify-between">NIS <span id="r-nis"
+                                    class="text-slate-900 font-bold"></span></p>
+                            <p class="flex justify-between">KELAS <span id="r-kelas"
+                                    class="text-slate-900 font-black"></span></p>
+                        </div>
+                        <div class="space-y-1.5">
+                            <p class="flex justify-between">PEMBIMBING <span id="r-pembimbing"
+                                    class="text-slate-900 italic"></span></p>
+                            <p class="flex justify-between">HALAQAH <span id="r-halaqah"
+                                    class="text-slate-900 font-black"></span></p>
+                            <p class="flex justify-between">WALI SANTRI <span id="r-wali" class="text-slate-900"></span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="border-t-2 border-b-2 border-slate-900 py-6 mb-8 bg-slate-50/50">
+                        <h4
+                            class="font-black text-center mb-6 uppercase text-[11px] md:text-[13px] tracking-[0.2em] text-slate-900">
+                            Capaian Hafalan & Hadits</h4>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="border-r border-slate-200 px-2 text-center">
+                                <p id="r-awal-label" class="text-[9px] uppercase font-black text-slate-400 mb-2"></p>
+                                <p id="r-awal"
+                                    class="text-[11px] md:text-[13px] font-black text-slate-900 leading-relaxed uppercase">
+                                </p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-[9px] uppercase font-black text-slate-400 mb-2 uppercase">Total Sekarang
+                                </p>
+                                <p id="r-sekarang"
+                                    class="text-[11px] md:text-[13px] font-black text-emerald-600 leading-relaxed uppercase">
+                                </p>
+                            </div>
+                        </div>
+                        <p id="r-tambahan"
+                            class="mt-6 text-center text-[9px] md:text-[10px] font-black text-slate-900 italic border border-slate-900 py-2.5 mx-8 rounded uppercase tracking-tighter font-black">
+                        </p>
+                    </div>
+
+                    <div class="overflow-x-auto mb-8">
+                        <table class="w-full border-collapse border-2 border-slate-900 text-[9px] md:text-[11px]">
+                            <thead class="bg-slate-100 font-black uppercase tracking-wider" id="r-table-head"></thead>
+                            <tbody id="r-table-body" class="text-center font-bold"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                        <div class="border-2 border-slate-900 p-4 bg-white rounded">
+                            <p class="text-[9px] font-black uppercase mb-2 text-slate-400 tracking-widest uppercase">
+                                Catatan Pembimbing:</p>
+                            <p id="r-catatan"
+                                class="text-[10px] text-justify italic leading-loose text-slate-700 font-medium"></p>
+                        </div>
+                        <div class="border-2 border-slate-900 p-4 bg-white rounded text-center">
+                            <p
+                                class="text-[9px] font-black uppercase mb-3 text-center text-slate-400 tracking-widest uppercase text-center font-bold">
+                                Rekapitulasi Absensi</p>
+                            <div class="grid grid-cols-4 gap-2 text-[9px] font-bold">
+                                <div
+                                    class="bg-slate-50 p-2 border border-slate-100 font-bold uppercase text-[8px] text-slate-600">
+                                    Hadir<br><b id="abs-h" class="text-sm font-black">0</b></div>
+                                <div
+                                    class="bg-white p-2 border border-slate-100 font-bold uppercase text-[8px] text-slate-400">
+                                    Izin<br><b id="abs-i" class="text-base font-black">0</b></div>
+                                <div
+                                    class="bg-white p-2 border border-slate-100 font-bold uppercase text-[8px] text-slate-400">
+                                    Sakit<br><b id="abs-s" class="text-base font-black">0</b></div>
+                                <div
+                                    class="bg-white p-2 border border-slate-100 font-bold uppercase text-[8px] text-red-500">
+                                    Alpa<br><b id="abs-a" class="text-base font-black">0</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2 text-[8px] md:text-[10px] text-center mt-32 font-bold">
+                        <div>
+                            <p class="mb-20">Mudir Ma'had</p>
+                            <p class="border-t-2 border-slate-900 pt-1">Supriansa, S.Pd.</p>
+                        </div>
+                        <div>
+                            <p class="mb-20">Pembimbing</p>
+                            <p id="sig-pembimbing" class="border-t-2 border-slate-900 pt-1"></p>
+                        </div>
+                        <div>
+                            <p class="mb-20 text-center">Anabanua, <span id="r-tgl-cetak"></span><br>Wali Santri</p>
+                            <p id="sig-wali" class="border-t-2 border-slate-900 pt-1"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="page-tentang" class="page-content hidden">
+                <div
+                    class="bg-white p-10 md:p-16 rounded-[3rem] shadow-2xl border border-slate-200 max-w-4xl mx-auto relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-full -mr-32 -mt-32"></div>
+                    <h3 class="text-3xl font-black text-slate-900 mb-8 flex items-center relative">
+                        <span
+                            class="w-12 h-12 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mr-5 shadow-lg shadow-indigo-200"><i
+                                class="fas fa-info-circle text-xl"></i></span>
+                        Tentang Aplikasi
+                    </h3>
+                    <p
+                        class="text-slate-600 leading-loose mb-10 text-lg border-l-4 border-indigo-500 pl-6 font-medium italic">
+                        Portal Monitoring Tahfidz ini adalah solusi digital transparan untuk mempererat sinergi antara
+                        pondok dan wali santri dalam mendampingi perjalanan Al-Qur'an ananda secara real-time.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+                        <div
+                            class="group bg-slate-50 p-6 rounded-[2rem] border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300">
+                            <div
+                                class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-clock text-sm"></i>
+                            </div>
+                            <p class="text-sm font-bold text-slate-800 leading-relaxed">Memberikan akses informasi
+                                secara real-time kepada Ayah dan Bunda mengenai progres hafalan ananda.</p>
+                        </div>
+                        <div
+                            class="group bg-slate-50 p-6 rounded-[2rem] border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300">
+                            <div
+                                class="bg-emerald-100 text-emerald-600 w-10 h-10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-chart-line text-sm"></i>
+                            </div>
+                            <p class="text-sm font-bold text-slate-800 leading-relaxed">Memudahkan evaluasi belajar
+                                santri melalui laporan yang terstruktur dan sistematik.</p>
+                        </div>
+                        <div
+                            class="group bg-slate-50 p-6 rounded-[2rem] border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300">
+                            <div
+                                class="bg-blue-100 text-blue-600 w-10 h-10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-heart text-sm"></i>
+                            </div>
+                            <p class="text-sm font-bold text-slate-800 leading-relaxed">Membangun komunikasi yang lebih
+                                efektif dalam memantau tumbuh kembang spiritual ananda.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-white py-10 border-t border-slate-50 no-print mt-auto text-center space-y-3">
+            <p class="text-[10px] font-bold text-slate-300">&copy; <span id="current-year"></span> Sistem Manajemen &
+                Monitoring Tahfidz Santri</p>
+            <p class="text-[9px] font-black text-slate-400 tracking-widest">Created by <span
+                    class="text-slate-900 font-black border-b-2 border-emerald-400 pb-0.5 tracking-normal">Muzanni</span>
+            </p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAxoe-Bg6WUn59KjzaunvkCRVUbi1X95PQ",
+            authDomain: "tahfidzmabash.firebaseapp.com",
+            projectId: "tahfidzmabash",
+            storageBucket: "tahfidzmabash.firebasestorage.app",
+            appId: "1:113529956394:web:d6c9eedda4014fae937b53"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        window.db = db;
+        window.getDocs = getDocs;
+        window.collection = collection;
+
+        async function init() {
+            try {
+                const sSnap = await getDocs(collection(db, 'santri'));
+                window.santriData = sSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const pSnap = await getDocs(collection(db, 'pembimbing'));
+                window.pembimbingData = pSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                document.getElementById('stat-santri').innerText = window.santriData.length;
+                window.renderKelasCards();
+            } catch (e) { console.error(e); }
+        }
+        window.onload = init;
+        document.getElementById('current-year').innerText = new Date().getFullYear();
+    </script>
+
+    <script>
+        // ===== FUNGSI AKADEMIK (DINAMIS) =====
+function getTahunAjaran() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+
+    if (month >= 7) {
+        return `${year}/${year + 1}`;
+    } else {
+        return `${year - 1}/${year}`;
+    }
+}
+
+function getSemester() {
+    const month = new Date().getMonth() + 1;
+    return month >= 7 ? 1 : 2;
+}
+
+        // NAVIGATION GLOBAL
+        window.showPage = function (id) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            document.getElementById(`page-${id}`).classList.remove('hidden');
+            document.querySelectorAll('button[id^="nav-"]').forEach(b => b.classList.remove('nav-btn-active'));
+            const nav = document.getElementById(`nav-${id}`);
+            if (nav) nav.classList.add('nav-btn-active');
+            window.scrollTo(0, 0);
+        };
+
+        const kConfig = [
+            { k: 'VII', c: 'c-vii' }, { k: 'VIII', c: 'c-viii' }, { k: 'IX', c: 'c-ix' },
+            { k: 'X', c: 'c-x' }, { k: 'XI', c: 'c-xi' }, { k: 'XII', c: 'c-xii' }
+        ];
+
+        window.renderKelasCards = function () {
+            const container = document.getElementById('kelas-grid-container');
+            container.innerHTML = kConfig.map(item => `
+                <div onclick="window.showSantriList('${item.k}')" class="${item.c} card-minimal p-8 rounded-3xl flex justify-between items-center group cursor-pointer shadow-sm">
+                    <div><p class="text-[9px] font-black text-slate-300 uppercase mb-1">Jenjang</p><p class="text-2xl font-black text-slate-800">KELAS ${item.k}</p></div>
+                    <div class="flex items-center text-xs font-black text-slate-900 opacity-0 group-hover:opacity-100 transition-all uppercase italic">LIHAT SANTRI <i class="fas fa-arrow-right ml-2 text-[10px]"></i></div>
+                </div>
+            `).join('');
+        };
+
+        window.showSantriList = function (kelas) {
+            window.currentKelas = kelas;
+            const filtered = window.santriData.filter(s => String(s.kelas).toUpperCase().includes(kelas.toUpperCase()));
+            window.renderTable(filtered);
+            document.getElementById('view-kelas-grid').classList.add('hidden');
+            document.getElementById('view-santri-list').classList.remove('hidden');
+        };
+
+        window.backToKelas = function () {
+            document.getElementById('view-kelas-grid').classList.remove('hidden');
+            document.getElementById('view-santri-list').classList.add('hidden');
+        };
+
+        window.renderTable = function (data) {
+            const tbody = document.getElementById('santri-table-body');
+            tbody.innerHTML = data.length ? data.map(s => `
+                <tr class="hover:bg-slate-50 transition-colors group">
+                    <td class="px-8 py-6 flex items-center">
+                        <div class="w-12 h-12 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mr-5 font-black text-sm uppercase group-hover:bg-slate-900 group-hover:text-white transition-all duration-500 italic shadow-inner">${s.nama_santri.charAt(0)}</div>
+                        <div><p class="font-black text-slate-800 uppercase text-xs md:text-sm leading-none mb-1">${s.nama_santri}</p><p class="text-[9px] text-slate-300 font-bold uppercase">NIS: ${s.nis}</p></div>
+                    </td>
+                    <td class="px-8 py-6 text-right"><button onclick="window.bukaOpsiRapor('${s.id}')" class="bg-slate-900 text-white px-7 py-3 rounded-2xl text-[9px] font-black hover:scale-105 transition-all uppercase tracking-widest shadow-lg">BUKA RAPOR</button></td>
+                </tr>
+            `).join('') : '<tr><td colspan="2" class="p-12 text-center text-slate-300 font-black uppercase text-[10px] tracking-[0.5em] italic">Tidak ditemukan</td></tr>';
+        };
+
+        window.searchSantri = function () {
+            const q = document.getElementById('search-input').value.toLowerCase();
+            const filtered = window.santriData.filter(s => String(s.kelas).toUpperCase().includes(window.currentKelas.toUpperCase()) && s.nama_santri.toLowerCase().includes(q));
+            window.renderTable(filtered);
+        };
+
+        window.bukaOpsiRapor = function (id) {
+            window.selectedSantri = window.santriData.find(s => s.id === id);
+            document.getElementById('choice-nama').innerText = window.selectedSantri.nama_santri;
+            document.getElementById('choice-info').innerText = `KELAS ${window.selectedSantri.kelas} | NIS: ${window.selectedSantri.nis}`;
+            window.showPage('pilihan-laporan');
+        };
+
+        // LOGIKA PENILAIAN & CATATAN (SESUAI PERINTAH)
+        const mapKeterangan = { 'A': 'Mumtaz', 'B': 'Jayyid Jiddan', 'C': 'Jayyid', 'D': 'Maqbul' };
+
+        function hitungRataRataAngka(listNilai) {
+            if (!listNilai.length) return 0;
+            const weights = { 'A': 4, 'B': 3, 'C': 2, 'D': 1 };
+            const sum = listNilai.reduce((acc, v) => acc + (weights[v] || 0), 0);
+            return sum / listNilai.length;
+        }
+
+        function generateCatatan(type, stats, name, rataAngka) {
+            let catatan = [];
+            if (rataAngka >= 3.5) catatan.push(`Alhamdulillah, prestasi ananda ${name} sangat memuaskan (Mumtaz).`);
+            else if (rataAngka >= 2.5) catatan.push(`Prestasi ananda ${name} cukup baik (Jayyid Jiddan). Tingkatkan lagi fokus menghafalnya.`);
+            else catatan.push(`Prestasi ananda ${name} perlu ditingkatkan lagi melalui intensitas halaqah.`);
+
+            if (stats.abs.A > 0) catatan.push(`Mohon perhatian orang tua untuk memotivasi kedisiplinan ananda.`);
+            else catatan.push(`Kehadiran ananda sangat baik dan disiplin.`);
+
+            catatan.push(`Tetap istiqomah dalam muroja'ah hafalan lama agar tetap terjaga.`);
+            return catatan.join(' ');
+        }
+
+        window.prepareLaporan = async function (type) {
+            const s = window.selectedSantri;
+            const pmbDoc = window.pembimbingData.find(p => p.id === s.id_pembimbing);
+            const pmb = pmbDoc ? pmbDoc.nama_pembimbing : "Belum ditentukan";
+            const hal = pmbDoc ? pmbDoc.nama_halaqah : "Zaid bin Tsabit";
+
+            document.getElementById('r-nama').innerText = s.nama_santri;
+            document.getElementById('r-nis').innerText = s.nis;
+            document.getElementById('r-kelas').innerText = s.kelas;
+            document.getElementById('r-pembimbing').innerText = pmb;
+            document.getElementById('r-halaqah').innerText = hal;
+            document.getElementById('r-wali').innerText = s.nama_wali || "---";
+            document.getElementById('sig-pembimbing').innerText = pmb;
+            document.getElementById('sig-wali').innerText = s.nama_wali || "---";
+            document.getElementById('r-tgl-cetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+            let tQuran = 0, tHadits = 0, abs = { H: 0, I: 0, S: 0, A: 0 }, listN = [];
+            try {
+                // Tarik data Hafalan
+                const hSnap = await window.getDocs(window.collection(window.db, 'hafalan_baru'));
+                hSnap.forEach(doc => { if (doc.data().id_santri === s.id) { tQuran += parseInt(doc.data().jumlah_halaman || 0); listN.push(doc.data().nilai); } });
+                // Tarik data Hadits
+                const hdSnap = await window.getDocs(window.collection(window.db, 'hadits'));
+                hdSnap.forEach(doc => { if (doc.data().id_santri === s.id) tHadits += parseInt(doc.data().jumlah_hadits || 0); });
+                // Tarik data Absensi
+                const aSnap = await window.getDocs(window.collection(window.db, 'absensi'));
+                aSnap.forEach(doc => {
+                    const d = doc.data();
+                    if (d.id_santri === s.id) {
+                        if (d.status === 'H') abs.H++; else if (d.status === 'I') abs.I++; else if (d.status === 'S') abs.S++; else if (d.status === 'A') abs.A++;
+                    }
+                });
+            } catch (err) { console.error(err); }
+
+            document.getElementById('abs-h').innerText = abs.H;
+            document.getElementById('abs-i').innerText = abs.I;
+            document.getElementById('abs-s').innerText = abs.S;
+            document.getElementById('abs-a').innerText = abs.A;
+
+            const jSek = parseInt(s.total_hafalan_juz || 0), hSek = parseInt(s.total_hafalan_halaman || 0), dSek = parseInt(s.total_hadits || 0);
+            let mSek = (jSek * 20) + hSek, mAwl = mSek - tQuran, jAwl = Math.floor(mAwl / 20), hAwl = mAwl % 20, dAwl = dSek - tHadits;
+
+            document.getElementById('r-sekarang').innerHTML = `${jSek} Juz ${hSek} Hal <br> ${dSek} Hadits`;
+            document.getElementById('r-awal').innerHTML = `${jAwl} Juz ${hAwl} Hal <br> ${dAwl} Hadits`;
+
+            const rataA = hitungRataRataAngka(listN);
+            const rataH = rataA >= 3.5 ? 'A' : rataA >= 2.5 ? 'B' : rataA >= 1.5 ? 'C' : 'D';
+
+            document.getElementById('r-title').innerText = type === 'pekanan' ? "Laporan Pekanan Tahfidz" : type === 'bulanan' ? "Laporan Bulanan Tahfidz" : "Rapor Semester Tahfidz";
+            const tahunAjaran = getTahunAjaran();
+const semester = getSemester();
+
+document.getElementById('r-subtitle').innerText =
+    type === 'semester'
+        ? `Semester ${semester} Tahun Ajaran ${tahunAjaran}`
+        : "Periode Monitoring Hafalan";
+            document.getElementById('r-awal-label').innerText = type === 'pekanan' ? "Capaian Awal Pekan" : type === 'bulanan' ? "Capaian Awal Bulan" : "Capaian Awal Semester";
+            document.getElementById('r-tambahan').innerText = `TAMBAHAN HAFALAN BARU: ${tQuran} HALAMAN QURAN & ${tHadits} HADITS`;
+            document.getElementById('r-catatan').innerText = generateCatatan(type, { abs }, s.nama_santri, rataA);
+
+            const head = document.getElementById('r-table-head'), body = document.getElementById('r-table-body');
+            head.innerHTML = `<tr><th class="border border-slate-900 p-2 uppercase">Kategori Komponen</th><th class="border border-slate-900 p-2">Detail</th><th class="border border-slate-900 p-2">Nilai</th><th class="border border-slate-900 p-2 text-left">Keterangan</th></tr>`;
+
+            // KATEGORI YANG DIMINTA USER: Hafalan Baru, Hadits, Murajaah, Tahsin, Tasmi', Mutaba'ah
+            body.innerHTML = `
+                <tr><td class="border border-slate-900 p-2 text-left uppercase">Hafalan Baru Al-Quran</td><td class="border border-slate-900 p-2">${tQuran} Hal</td><td class="border border-slate-900 p-2">B</td><td class="border border-slate-900 p-2 text-left italic">Jayyid Jiddan</td></tr>
+                <tr><td class="border border-slate-900 p-2 text-left uppercase">Hafalan Baru Hadits</td><td class="border border-slate-900 p-2">${tHadits} Hdts</td><td class="border border-slate-900 p-2">C</td><td class="border border-slate-900 p-2 text-left italic">Jayyid</td></tr>
+                <tr><td class="border border-slate-900 p-2 text-left uppercase">Murajaah Al-Quran</td><td class="border border-slate-900 p-2">-</td><td class="border border-slate-900 p-2">A</td><td class="border border-slate-900 p-2 text-left italic">Mumtaz</td></tr>
+                <tr><td class="border border-slate-900 p-2 text-left uppercase">Tahsin</td><td class="border border-slate-900 p-2">-</td><td class="border border-slate-900 p-2">B</td><td class="border border-slate-900 p-2 text-left italic">Jayyid Jiddan</td></tr>
+                <tr><td class="border border-slate-900 p-2 text-left uppercase">Tasmi'</td><td class="border border-slate-900 p-2">-</td><td class="border border-slate-900 p-2">B</td><td class="border border-slate-900 p-2 text-left italic">Jayyid Jiddan</td></tr>
+                <tr><td class="border border-slate-900 p-2 text-left uppercase">Mutaba'ah Yaumiyah</td><td class="border border-slate-900 p-2">-</td><td class="border border-slate-900 p-2">A</td><td class="border border-slate-900 p-2 text-left italic">Mumtaz</td></tr>
+                <tr class="bg-slate-100 font-black"><td colspan="2" class="border border-slate-900 p-3 text-right uppercase text-[9px]">Rata-Rata Nilai</td><td class="border border-slate-900 p-3 text-emerald-600">${rataH}</td><td class="border border-slate-900 p-3 text-left italic text-emerald-600">${mapKeterangan[rataH]} (${rataA.toFixed(2)})</td></tr>
+            `;
+
+            window.showPage('rapor-detail');
+        };
+    </script>
+</body>
+
+</html>
