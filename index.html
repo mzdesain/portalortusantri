@@ -427,7 +427,15 @@
         import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
         /* KODE CONFIG DI SINI */
-
+        const firebaseConfig = {
+            apiKey: "AIzaSyDodZJ4yJIRHo1d7fVhK3YoQyFIYToltPw",
+            authDomain: "tahfidzalquran-73c1c.firebaseapp.com",
+            projectId: "tahfidzalquran-73c1c",
+            storageBucket: "tahfidzalquran-73c1c.firebasestorage.app",
+            messagingSenderId: "899264291542",
+            appId: "1:899264291542:web:4998c2f4db8f9cb4249f77"
+        };
+        
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         window.db = db;
